@@ -6,3 +6,4 @@
 
 	new News_Article();
 	new Stock_Recommendation();
+	new Stock_Ticker();
