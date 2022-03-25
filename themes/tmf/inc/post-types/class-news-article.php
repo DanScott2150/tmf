@@ -39,10 +39,7 @@
 
 			);
 
-			register_post_type( 'news_article', $args );
+			register_post_type( 'news-article', $args );
 
 		}
-
-
-
 	}

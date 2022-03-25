@@ -5,3 +5,4 @@
 	require get_template_directory() . '/inc/taxonomies/class-stock-ticker.php';
 
 	new News_Article();
+	new Stock_Recommendation();
