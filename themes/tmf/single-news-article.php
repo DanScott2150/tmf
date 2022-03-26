@@ -20,7 +20,7 @@ get_header();
 	<header>
 		<h2>News Article: <?php the_title(); ?> </h2>
 		<?php get_template_part( 'template-parts/stock-ticker-list' ); ?>
-		<em>Posted by <?php the_author(); ?> on <?php the_date(); ?></em>
+		<?php get_template_part( 'template-parts/author-dateline' ); ?>
 	</header>
 
 	<div>
