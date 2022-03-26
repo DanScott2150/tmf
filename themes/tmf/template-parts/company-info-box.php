@@ -22,7 +22,7 @@ $data   = $api->fetchCompanyInfo( $ticker );
 
 		<div class="alert alert-danger">
 			There was an error with the API request<br/>
-			Error Code: <strong><?php echo $data['code']; ?> -- <?php echo $data['message']; ?></strong>
+			Error Code: <strong><?php echo wp_kses( $data['code'], 'post' ); ?> -- <?php echo wp_kses( $data['message'], 'post' ); ?></strong>
 		</div>
 
 		<?php
@@ -30,16 +30,16 @@ $data   = $api->fetchCompanyInfo( $ticker );
 			$company_data = $data['body'][0];
 			?>
 
-			<div class="text-center"><h4><?php echo $company_data->companyName; ?></h4></div>
-			<div style="text-align: center"><img src="<?php echo $company_data->image; ?>" style="max-width:150px" /></div>
+			<div class="text-center"><h4><?php echo wp_kses( $company_data->companyName, 'post' ); ?></h4></div>
+			<div style="text-align: center"><img src="<?php echo esc_attr( $company_data->image ); ?>" style="max-width:150px" /></div>
 			<hr/>
-			<div><strong>Exchange:</strong> <?php echo $company_data->exchange; ?> (<?php echo $company_data->exchangeShortName; ?>)</div>
-			<div><strong>Industry:</strong> <?php echo $company_data->industry; ?></div>
-			<div><strong>Sector:</strong> <?php echo $company_data->sector; ?></div>
-			<div><strong>CEO:</strong> <?php echo $company_data->ceo; ?></div>
-			<div><strong>Website:</strong> <a href="<?php echo $company_data->website; ?>" target="_blank"><?php echo $company_data->website; ?></a></div>
+			<div><strong>Exchange:</strong> <?php echo wp_kses( $company_data->exchange, 'post' ); ?> (<?php echo wp_kses( $company_data->exchangeShortName, 'post' ); ?>)</div>
+			<div><strong>Industry:</strong> <?php echo wp_kses( $company_data->industry, 'post' ); ?></div>
+			<div><strong>Sector:</strong> <?php echo wp_kses( $company_data->sector, 'post' ); ?></div>
+			<div><strong>CEO:</strong> <?php echo wp_kses( $company_data->ceo, 'post' ); ?></div>
+			<div><strong>Website:</strong> <a href="<?php echo esc_url( $company_data->website ); ?>" target="_blank"><?php echo wp_kses( $company_data->website, 'post' ); ?></a></div>
 			<hr/>
-			<div><?php echo $company_data->description; ?></div>
+			<div><?php echo wp_kses( $company_data->description, 'post' ); ?></div>
 
 			<?php
 		endif;

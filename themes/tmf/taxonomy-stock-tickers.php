@@ -17,9 +17,26 @@
 get_header();
 
 $company_ticker = single_term_title( '', false );
+$data_api       = new Data_API();
+$api_response   = $data_api->fetchCompanyInfo( strtolower( $company_ticker ) );
+$company_info   = $api_response['body'][0];
+
+$company = array(
+	'name'     => $company_info->companyName,
+	'ticker'   => $company_info->symbol,
+	'exchange' => $company_info->exchangeShortName,
+	'logo'     => $company_info->image,
+	'beta'     => $company_info->beta,
+	'lastDiv'  => $company_info->lastDiv,
+);
 ?>
 
-<h2 class="text-center pb-3 mb-3 border-bottom">Company Page: <?php echo wp_kses( $company_ticker, 'post' ); ?></h2>
+<div class="text-center pb-3 mb-3 border-bottom">
+	<img src="<?php echo $company['logo']; ?>" style="display: block; margin: 0 auto;"/>
+	<h2 class="">Company Page: <?php echo $company['name'] ?></h2>
+	<span>(<?php echo $company['exchange'] . ' : ' . $company['ticker']; ?>)</span>
+</div>
+
 
 <div class="container-fluid">
 	<div class="row">
@@ -48,9 +65,15 @@ $company_ticker = single_term_title( '', false );
 
 		<div class="col-12 col-lg-4">
 
-			<h3 class="text-center">Company Info</h3>
 
-			<p>Placeholder for API call data </p>
+			<?php
+				/**
+				 * Since 'beta' and 'lastDiv' data pull from the "company info" API we're using on this page,
+				 * as opposed to the "Financial Info" API we use in the callout box, pass that data through to
+				 * the template, so we can output it there.
+				 */
+				get_template_part( 'template-parts/company-financial-box', null, array( $company ) );
+			?>
 
 		</div> <!-- col-12 col-lg-6 -->
 
@@ -84,3 +107,6 @@ $company_ticker = single_term_title( '', false );
 
 
 	</div>
+
+<?php
+get_footer();
