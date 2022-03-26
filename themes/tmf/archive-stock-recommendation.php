@@ -9,6 +9,8 @@
  *
  * Modifications to archive WP_Query made via class-stock-recommendation.php CPT.
  *
+ * @todo Break individual posts in feed out into separate template part (re-use in taxonomy-stock-tickers.php for feed there).
+ *
  * @package tmf
  */
 

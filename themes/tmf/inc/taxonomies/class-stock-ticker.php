@@ -52,8 +52,63 @@ class Stock_Ticker {
 	 * @return array - Array of WP_Term Objects (or false if none)
 	 */
 	public static function getPostTickers() {
-
 		return get_the_terms( get_the_ID(), 'stock-tickers' );
+	}
 
+
+	/**
+	 * Function: fetchCompanyNews()
+	 *
+	 * Runs custom WP_Query to fetch all 'news-article' CPTs associated for given stock ticker.
+	 * Used on Company-specific pages.
+	 *
+	 * @param string $ticker - slug of stock-ticker taxonomy we want to fetch.
+	 * @return object WP_Query - posts matching critera.
+	 */
+	public static function fetchCompanyNews( $ticker ) {
+
+		$news_args = array(
+			'post_type'      => 'news-article',
+			'posts_per_page' => 10,
+			'tax_query'      => array(
+				array(
+					'taxonomy' => 'stock-tickers',
+					'field'    => 'slug',
+					'terms'    => strtolower( $ticker ),
+				),
+			),
+		);
+
+		$news_posts = new WP_Query( $news_args );
+
+		return $news_posts;
+	}
+
+	/**
+	 * Function: fetchCompanyRecommendations()
+	 *
+	 * Runs custom WP_Query to fetch all 'stock-recommendation' CPTs associated for given stock ticker.
+	 * Used on Company-specific pages.
+	 *
+	 * @param string $ticker - slug of stock-ticker taxonomy we want to fetch.
+	 * @return object WP_Query - posts matching critera.
+	 */
+	public static function fetchCompanyRecommendations( $ticker ) {
+
+		$rec_args = array(
+			'post_type'      => 'stock-recommendation',
+			'posts_per_page' => 10,
+			'tax_query'      => array(
+				array(
+					'taxonomy' => 'stock-tickers',
+					'field'    => 'slug',
+					'terms'    => strtolower( $ticker ),
+				),
+			),
+		);
+
+		$rec_posts = new WP_Query( $rec_args );
+
+		return $rec_posts;
 	}
 }

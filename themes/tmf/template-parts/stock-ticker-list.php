@@ -2,7 +2,7 @@
 /**
  * Template Part for displaying stock ticker (or list of stock tickers) associated with given post.
  *
- * @todo Auto-link tickers to company page [once that's been built]
+ * @todo find way to fix URL to stock ticker taxonomy page, would be better as /company/[slug], as opposed to /stock-ticker/[slug]
  * @package tmf
  */
 
@@ -10,7 +10,7 @@ $postTickersTerms = Stock_Ticker::getPostTickers(); // Returns array of WP_Term 
 
 $postTickersArray = array_map(
 	function( $object ) {
-		return $object->name;
+		return '<a href="/stock-tickers/' . $object->slug . '">' . $object->name . '</a>';
 	}, $postTickersTerms
 );
 
@@ -19,5 +19,5 @@ $postTickersString = implode( ', ', $postTickersArray );
 ?>
 
 <div>
-	<strong>Stock Tickers: <?php echo esc_html( $postTickersString ); ?></strong>
+	<strong>Stock Tickers: <?php echo wp_kses( $postTickersString, 'post' ); ?></strong>
 </div>
