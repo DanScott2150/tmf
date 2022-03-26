@@ -7,11 +7,10 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="page" class="site">
-	<header>
+	<header class="p-3 mb-3 border-bottom" style="background-color:black; color: white;">
 		<h1><a href="/">TMF</a></h1>
-		<hr/>
 	</header>
 
 	<div id="content" class="site-content">
 		<div id="primary" class="content-area">
-			<main id="main" class="site-main">
+			<main id="main" class="container">

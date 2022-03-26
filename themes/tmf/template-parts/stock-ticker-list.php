@@ -10,7 +10,7 @@ $postTickersTerms = Stock_Ticker::getPostTickers(); // Returns array of WP_Term 
 
 $postTickersArray = array_map(
 	function( $object ) {
-		return '<a href="/stock-tickers/' . $object->slug . '">' . $object->name . '</a>';
+		return '<span class="badge bg-primary"><a href="/stock-tickers/' . $object->slug . '">' . $object->name . '</a></span>';
 	}, $postTickersTerms
 );
 

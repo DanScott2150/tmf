@@ -1,7 +1,10 @@
-@charset "UTF-8";
-
 /*
 Theme Name: TMF
 Author: Dan Scott
 
 */
+
+a{
+	color: inherit!important;
+	text-decoration: none;
+}
