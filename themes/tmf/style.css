@@ -5,6 +5,18 @@ Author: Dan Scott
 */
 
 a{
-	color: inherit!important;
+	color: inherit;
 	text-decoration: none;
+	transition: all .5s;
+}
+
+a:hover{
+	color: inherit;
+}
+
+a.stock-ticker-badge.badge.bg-primary:hover{
+	background-color: aqua!important;
+	color: inherit;
+	cursor: pointer;
+	/* border: 1px solid #000; */
 }

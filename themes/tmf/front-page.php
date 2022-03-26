@@ -19,7 +19,7 @@ get_header();?>
 			<?php
 				$news_args = array(
 					'post_type'      => 'news-article',
-					'posts_per_page' => -1,
+					'posts_per_page' => 10,
 				);
 
 				$news_posts = new WP_Query( $news_args );
@@ -31,6 +31,8 @@ get_header();?>
 					}
 				}
 				?>
+
+				<p class="mt-3"><a href="/news-article">View All News Articles >></a></p>
 		</div>
 
 		<div class="col-12 col-lg-6">
@@ -40,7 +42,7 @@ get_header();?>
 			<?php
 				$rec_args = array(
 					'post_type'      => 'stock-recommendation',
-					'posts_per_page' => -1,
+					'posts_per_page' => 10,
 				);
 
 				$rec_posts = new WP_Query( $rec_args );
@@ -73,13 +75,12 @@ get_header();?>
 		$terms = get_terms( $terms_args );
 
 		foreach ( $terms as $ticker ) {
-			echo '<span class="badge bg-primary">'
-					. '<a href="/stock-tickers/' . esc_html( $ticker->slug ) . '">'
+			echo '<a class="stock-ticker-badge badge bg-primary" href="/stock-tickers/' . esc_html( $ticker->slug ) . '">'
 					. esc_html( $ticker->name )
 					. '</a>'
 					. '</span> ';
 		}
-	?>
+		?>
 </div>
 
 <?php
