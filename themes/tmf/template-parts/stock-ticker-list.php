@@ -18,6 +18,6 @@ $postTickersString = implode( ', ', $postTickersArray );
 
 ?>
 
-<div style="display: inline-block">
+<div>
 	<strong>Stock Tickers: <?php echo wp_kses( $postTickersString, 'post' ); ?></strong>
 </div>
