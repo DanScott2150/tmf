@@ -36,13 +36,7 @@ $company_ticker = single_term_title( '', false );
 	if ( $rec_posts->have_posts() ) {
 		while ( $rec_posts->have_posts() ) {
 			$rec_posts->the_post();
-			?>
-
-				<h4><?php the_title(); ?></h4>
-				<?php get_template_part( 'template-parts/author-dateline' ); ?><br/>
-				<a href="<?php the_permalink(); ?>">Read More >></a>
-
-			<?php
+			get_template_part( 'template-parts/stock-recommendation-card' );
 		}
 	} else {
 		?>
@@ -67,13 +61,7 @@ $company_ticker = single_term_title( '', false );
 	if ( $news_posts->have_posts() ) {
 		while ( $news_posts->have_posts() ) {
 			$news_posts->the_post();
-			?>
-
-				<h4><?php the_title(); ?></h4>
-				<?php get_template_part( 'template-parts/author-dateline' ); ?><br/>
-				<a href="<?php the_permalink(); ?>">Read More >></a>
-
-			<?php
+			get_template_part( 'template-parts/news-article-card' );
 		}
 	} else {
 		?>

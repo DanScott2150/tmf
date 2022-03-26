@@ -22,14 +22,14 @@ if ( have_posts() ) : ?>
 		<?php the_archive_title(); ?>
 	</header>
 
-	<?php while ( have_posts() ) : ?>
-		<?php the_post(); ?>
+	<?php
+	while ( have_posts() ) :
+		the_post();
 
-			<h3><?php the_title(); ?></h3>
-			<?php get_template_part( 'template-parts/stock-ticker-list' ); ?>
-			<a href="<?php the_permalink(); ?>">Read More</a>
-			<hr/>
-	<?php endwhile; ?>
+		get_template_part( 'template-parts/stock-recommendation-card' );
+
+	endwhile;
+	?>
 
 	<div><?php previous_posts_link( '<< Older Stock Recommendations' ); ?></div>
 	<div><?php next_posts_link( 'Newer Stock Recommendations >>' ); ?></div>
