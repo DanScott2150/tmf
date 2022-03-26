@@ -13,6 +13,7 @@ class Stock_Recommendation {
 	/** Constructor */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_cpt' ) );
+		add_filter( 'pre_get_posts', array( $this, 'modify_archive_wp_query' ) );
 	}
 
 	/** Register CPT with WordPress */
@@ -42,5 +43,22 @@ class Stock_Recommendation {
 
 		register_post_type( 'stock-recommendation', $args );
 
+	}
+
+	/**
+	 * Set custom pagination & sort for our archive page.
+	 *
+	 * @param object $query - WP Query for the archive page.
+	 */
+	public function modify_archive_wp_query( $query ) {
+
+		if ( $query->is_main_query() && $query->is_archive() && $query->is_post_type_archive( 'stock-recommendation' ) ) {
+
+			$query->set( 'posts_per_archive_page', 10 );
+			$query->set( 'orderby', 'date' );
+			$query->set( 'order', 'DESC' );
+
+			return $query;
+		}
 	}
 }
