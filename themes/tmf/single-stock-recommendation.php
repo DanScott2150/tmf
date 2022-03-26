@@ -18,6 +18,7 @@ get_header();
 <article>
 
 	<header>
+		<h2>News Article: <?php the_title(); ?> </h2>
 		<h2><?php the_title(); ?> </h2>
 	</header>
 

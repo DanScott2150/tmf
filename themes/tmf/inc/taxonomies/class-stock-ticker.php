@@ -1,25 +1,27 @@
 <?php
-
 /**
- * Class Stock_Ticker
+ * CUSTOM TAXONOMY: Stock Ticker
  *
- * Custom Taxonomy: Stock Ticker
+ * Creates custom taxonomy for usage with 'News Article' & 'Stock Recommendation' CPTs
+ * 'tag' type taxonomy (i.e. possible for multiple tickers per post)
  *
- * Requirements:
- * 	- Applicable for CPTs: News Article, Stock Recommendation
- *  - Tag-type of taxonomy (i.e. possible for multiple tickers per post)
- *  - ..?
+ * Includes utility function for outputting tickers to front end for a given post.
+ *
+ * @package tmf
  */
 
-class Stock_Ticker{
+/** Class Stock_Ticker */
+class Stock_Ticker {
 
-	public function __construct(){
-		add_action( 'init', [ $this, 'register_taxonomy' ] );
+	/** Constructor */
+	public function __construct() {
+		add_action( 'init', array( $this, 'register_taxonomy' ) );
 	}
 
+	/** Register taxonomy within WordPress */
 	public function register_taxonomy() {
 
-		$labels = [
+		$labels = array(
 			'name'          => __( 'Stock Ticker' ),
 			'singular_name' => __( 'Ticker' ),
 			'menu_name'     => __( 'Stock Tickers' ),
@@ -29,23 +31,25 @@ class Stock_Ticker{
 			'update_item'   => __( 'Update Ticker' ),
 			'add_new_item'  => __( 'Add New Ticker' ),
 			'not_found'     => __( 'No Tickers Found' ),
-		];
+		);
 
-		$args = [
+		$args = array(
 			'labels'            => $labels,
 			'public'            => true,
 			'show_admin_column' => true,
-		];
+		);
 
-		register_taxonomy( 'stock-tickers', [ 'news-article', 'stock-recommendation' ], $args );
+		register_taxonomy( 'stock-tickers', array( 'news-article', 'stock-recommendation' ), $args );
 
 	}
 
 	/**
+	 * Function: getPostTickers()
+	 *
 	 * Get list of all stock tickers (terms) associated with a given post.
 	 * Broken out here so we can use across various CPTs.
 	 *
-	 * return Array of WP_Term Objects (or false if none)
+	 * @return array - Array of WP_Term Objects (or false if none)
 	 */
 	public static function getPostTickers() {
 
