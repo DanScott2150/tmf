@@ -14,11 +14,12 @@ const generateHTML = ( data ) => {
 	let price             = data.price.toLocaleString();
 	let priceChange       = data.change.toLocaleString();
 	let percentChange     = data.changesPercentage.toFixed(2);
-	let percentChangeSign = percentChange >= 0 ? '+' : '-';
+	let percentChangeSign = percentChange >= 0 ? '+' : ''; //api data includes minus-sign if negative
 	let yearLow           = data.yearLow.toLocaleString();
 	let yearHigh          = data.yearHigh.toLocaleString();
 	let avgVolume         = data.avgVolume.toLocaleString();
 	let mktCap            = Math.round(data.marketCap/1000000).toLocaleString();
+	let lastDivOutput     = lastDiv ? `$${lastDiv} (${(lastDiv / price * 100).toFixed(2)}% yield)` : 'N/A';
 
 	output = `
 		<table>
@@ -41,6 +42,14 @@ const generateHTML = ( data ) => {
 			<tr>
 				<td>Market Cap:</td>
 				<td>$${mktCap} million</td>
+			</tr>
+			<tr>
+				<td>Stock Beta:</td>
+				<td>${beta}</td>
+			</tr>
+			<tr>
+				<td>Last Dividend:</td>
+				<td>${lastDivOutput}</td>
 			</tr>
 		</table>
 	`;

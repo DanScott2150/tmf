@@ -31,6 +31,18 @@ $company = array(
 );
 ?>
 
+<?php
+	/**
+	 * Beta & Last Div pull from a different API endpoint than the one we use for our stock info callout box.
+	 * I don't think wp_localize_script works for this specific use-case.
+	 * So we just pass them to javascript here manually.
+	 */
+?>
+<script>
+	const beta = <?php echo $company['beta']; ?>;
+	const lastDiv = <?php echo $company['lastDiv']; ?>;
+</script>
+
 <div class="text-center pb-3 mb-3 border-bottom">
 	<img src="<?php echo $company['logo']; ?>" style="display: block; margin: 0 auto;"/>
 	<h2 class="">Company Page: <?php echo $company['name'] ?></h2>
