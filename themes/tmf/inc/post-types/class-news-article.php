@@ -30,7 +30,7 @@ class News_Article {
 		$args = array(
 			'label'         => __( 'News Article' ),
 			'labels'        => $labels,
-			'supports'      => array( 'title', 'editor', 'author', 'thumbnail' ),
+			'supports'      => array( 'title', 'editor', 'author' ),
 			'taxonomies'    => array( 'stock_ticker' ),
 			'public'        => true,
 			'menu_position' => 5,

@@ -1,16 +1,22 @@
-const API_URL_BASE = 'https://financialmodelingprep.com/api/v3/quote/';
-const API_KEY = '2fbb16c2b70e1ecf2958597f887aec2f'; // I know this is bad practice. Just doing it for ease of testing/review.'
-const CURRENT_TICKER = term; // Passed in via wp_add_inline_script(), will populate based on the term of the current archive page.
+/**
+ * Fetching stock data for a given ticker, via javascript fetch()
+ *
+ * API Reference: https://site.financialmodelingprep.com/developer/docs/stock-api
+ *
+ * @param string php_term -- Populates via wp_add_inline_script(). WP Term (stock ticker) for the current company archive page that we're viewing.
+ */
 
-const URL = API_URL_BASE + CURRENT_TICKER + '?apikey=' + API_KEY;
-
-const targetElement = document.querySelector('#js-stock-data');
+const API_URL_BASE   = 'https://financialmodelingprep.com/api/v3/quote/';
+const API_KEY        = '2fbb16c2b70e1ecf2958597f887aec2f'; // I know this is bad practice. Just doing it for ease of testing/review.'
+const CURRENT_TICKER = php_term; // Passed in via wp_add_inline_script(), will populate based on the term of the current archive page.
+const URL            = API_URL_BASE + CURRENT_TICKER + '?apikey=' + API_KEY;
+const targetElement  = document.querySelector('#js-stock-data');
 
 
 const generateHTML = ( data ) => {
 	let output = '';
 
-	// Modify data for output
+	// Modify & format data for output
 	let price             = data.price.toLocaleString();
 	let priceChange       = data.change.toLocaleString();
 	let percentChange     = data.changesPercentage.toFixed(2);

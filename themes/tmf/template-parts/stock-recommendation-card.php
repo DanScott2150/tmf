@@ -8,13 +8,6 @@
 
 ?>
 
-<style>
-	.stock-recommendation-card:hover{
-		cursor:pointer;
-		background-color: #D3D3D3;
-	}
-</style>
-
 <div class="stock-recommendation-card border border-primary rounded my-2 p-3">
 	<a href="<?php the_permalink(); ?>">
 		<h4><?php the_title(); ?></h4>

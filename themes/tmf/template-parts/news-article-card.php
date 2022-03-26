@@ -3,19 +3,15 @@
  * News Article Card
  * For displaying within feeds.
  *
+ * Setup to conditionally show post excerpts, if 'include_excerpts' is passed as an argument when this template is called.
+ * Seemed like a good idea to include it for when news posts are showing on Company archive pages, maybe overkill though.
+ *
  * @package tmf
  */
 
 $permalink = get_the_permalink();
 
 ?>
-
-<style>
-	.news-article-card:hover{
-		cursor:pointer;
-		background-color: #D3D3D3;
-	}
-</style>
 
 <div class="news-article-card border border-primary rounded my-2" >
 	<a href="<?php echo esc_attr( $permalink ); ?>">

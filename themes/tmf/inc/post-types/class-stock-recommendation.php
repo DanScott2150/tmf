@@ -3,6 +3,7 @@
  * CUSTOM POST TYPE: Stock Recommendation
  *
  * Basic WordPress post, but with support for 'stock ticker' taxonomy.
+ * Includes utility function to make modifications to CPT's archive page query.
  *
  * @package tmf
  */
@@ -31,8 +32,8 @@ class Stock_Recommendation {
 		$args = array(
 			'label'         => __( 'Stock Recommendation' ),
 			'labels'        => $labels,
-			'supports'      => array( 'title', 'editor', 'author', 'thumbnail' ),
-			'taxonomies'    => array( 'stock_ticker' ),
+			'supports'      => array( 'title', 'editor', 'author' ),
+			'taxonomies'    => array( 'stock-tickers' ),
 			'public'        => true,
 			'menu_position' => 5,
 			'menu_icon'     => 'dashicons-money-alt',

@@ -2,15 +2,11 @@
 /**
  * COMPANY PAGE for individual stock-ticker taxonomy terms.
  *
- * Display:
- * -- Company name [tax custom field, OR API call]
- * -- Logo [tax custom field, OR API call]
- * -- Description [tax custom field, OR API call]
- * -- Financial Data [API call]
- *
  * Post feed: Stock Recommendations (newest first)
  * Post feed: News Articles (header "Other Coverage", newest first, pagination 10)
+ * Callout box for financial info via API
  *
+ * @todo If this was an ongoing project, maybe find a way to change permalink structure so these pages were something like /company/{ticker}, as opposed to /stock-ticker/{ticker}
  * @package tmf
  */
 
@@ -39,15 +35,16 @@ $company = array(
 	 */
 ?>
 <script>
-	const beta = <?php echo $company['beta']; ?>;
+	const beta    = <?php echo $company['beta']; ?>;
 	const lastDiv = <?php echo $company['lastDiv']; ?>;
 </script>
 
-<div class="text-center pb-3 mb-3 border-bottom">
+
+<header class="text-center pb-3 mb-3 border-bottom">
 	<img src="<?php echo $company['logo']; ?>" style="display: block; margin: 0 auto;"/>
 	<h2 class="">Company Page: <?php echo $company['name'] ?></h2>
 	<span>(<?php echo $company['exchange'] . ' : ' . $company['ticker']; ?>)</span>
-</div>
+</header>
 
 
 <div class="container-fluid">
@@ -77,15 +74,7 @@ $company = array(
 
 		<div class="col-12 col-lg-4">
 
-
-			<?php
-				/**
-				 * Since 'beta' and 'lastDiv' data pull from the "company info" API we're using on this page,
-				 * as opposed to the "Financial Info" API we use in the callout box, pass that data through to
-				 * the template, so we can output it there.
-				 */
-				get_template_part( 'template-parts/company-financial-box', null, array( $company ) );
-			?>
+			<?php get_template_part( 'template-parts/company-financial-box' ); ?>
 
 		</div> <!-- col-12 col-lg-6 -->
 
@@ -93,8 +82,8 @@ $company = array(
 
 
 	<div class="row mt-3 pt-3 border-top">
-
 		<div class="col-12">
+
 			<h3 class="text-center">Other Coverage</h3>
 
 			<?php

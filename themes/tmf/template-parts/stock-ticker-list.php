@@ -1,8 +1,9 @@
 <?php
 /**
  * Template Part for displaying stock ticker (or list of stock tickers) associated with given post.
+ * Built it out this way to accomodate any posts that might have multiple stock tickers, but didn't fully follow-through on that elsewhere.
+ * If this were an ongoing project that might be something to re-visit.
  *
- * @todo find way to fix URL to stock ticker taxonomy page, would be better as /company/[slug], as opposed to /stock-ticker/[slug]
  * @package tmf
  */
 
@@ -15,6 +16,7 @@ $postTickersArray = array_map(
 );
 
 $postTickersString = implode( ', ', $postTickersArray );
+
 
 ?>
 

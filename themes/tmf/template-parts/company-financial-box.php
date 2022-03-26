@@ -1,12 +1,13 @@
 <?php
 /**
  * Callout-box to display Company data for ticker of current post.
- *
  * Using Javascript per project requirements.
+ *
+ * Div#js-stock-data gets overwritten via javascript, following the stock API response.
+ * Ref: src/js/stock-data-api.js
  *
  * @package tmf
  */
-
 
 ?>
 

@@ -1,19 +1,18 @@
 <?php
-	/**
-	 * Page Template: News Article
-	 *
-	 * Requirements:
-	 * 	- Basic 'content' template: author name, publish date, content
-	 *  -
-	 */
+/**
+ * Page Template: News Article
+ *
+ * @package tmf
+ */
+
 ?>
 
 <?php
 get_header();
 
-	while ( have_posts() ) :
-		the_post();
-?>
+while ( have_posts() ) :
+	the_post();
+	?>
 
 <article>
 
@@ -29,7 +28,7 @@ get_header();
 
 </article>
 
-<?php
-	endwhile;
+	<?php
+endwhile;
 
 get_footer();

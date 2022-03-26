@@ -5,7 +5,10 @@
  * Creates custom taxonomy for usage with 'News Article' & 'Stock Recommendation' CPTs
  * 'tag' type taxonomy (i.e. possible for multiple tickers per post)
  *
- * Includes utility function for outputting tickers to front end for a given post.
+ * Includes utility functions for:
+ * - outputting tickers to front end for a given post.
+ * - Fetching (via WP_Query) all news article posts for a given ticker.
+ * - Fetching (via WP_Query) all stock recommendation posts for a given ticker.
  *
  * @package tmf
  */
