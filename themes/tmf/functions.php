@@ -7,3 +7,5 @@
 	new News_Article();
 	new Stock_Recommendation();
 	new Stock_Ticker();
+
+	add_theme_support( 'title-tag' );

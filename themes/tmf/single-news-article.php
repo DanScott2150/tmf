@@ -18,12 +18,15 @@ get_header();
 <article>
 
 	<header>
-		<h2><?php the_title(); ?> </h2>
+		<h2>News Article: <?php the_title(); ?> </h2>
+		<?php get_template_part( 'template-parts/stock-ticker-list' ); ?>
 	</header>
 
 	<div>
 		<?php the_content(); ?>
 	</div>
+
+</article>
 
 <?php
 	endwhile;
