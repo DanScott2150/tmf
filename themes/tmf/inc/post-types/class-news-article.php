@@ -24,6 +24,9 @@ class News_Article {
 			'menu_name'     => __( 'News Articles' ),
 			'add_new'       => __( 'Add New Article' ),
 			'add_new_item'  => __( 'Add New Article' ),
+			'edit_item'     => __( 'Edit Article' ),
+			'view_item'     => __( 'View Article' ),
+			'search_items'  => __( 'Search Articles' ),
 			'not_found'     => __( 'No News Articles Found' ),
 		);
 

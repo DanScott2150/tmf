@@ -26,6 +26,9 @@ class Stock_Recommendation {
 			'menu_name'     => __( 'Stock Recommendations' ),
 			'add_new'       => __( 'Add New Stock Recommendation' ),
 			'add_new_item'  => __( 'Add New Stock Recommendation' ),
+			'edit_item'     => __( 'Edit Recommendation' ),
+			'view_item'     => __( 'View Recommendation' ),
+			'search_items'  => __( 'Search Recommendations' ),
 			'not_found'     => __( 'No Stock Recommendations Found' ),
 		);
 

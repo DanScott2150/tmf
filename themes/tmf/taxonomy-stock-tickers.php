@@ -18,12 +18,13 @@ $api_response   = $data_api->fetchCompanyInfo( strtolower( $company_ticker ) );
 $company_info   = $api_response['body'][0];
 
 $company = array(
-	'name'     => $company_info->companyName,
-	'ticker'   => $company_info->symbol,
-	'exchange' => $company_info->exchangeShortName,
-	'logo'     => $company_info->image,
-	'beta'     => $company_info->beta,
-	'lastDiv'  => $company_info->lastDiv,
+	'name'        => $company_info->companyName,
+	'ticker'      => $company_info->symbol,
+	'exchange'    => $company_info->exchangeShortName,
+	'logo'        => $company_info->image,
+	'beta'        => $company_info->beta,
+	'lastDiv'     => $company_info->lastDiv,
+	'description' => $company_info->description,
 );
 ?>
 
@@ -74,7 +75,12 @@ $company = array(
 
 		<div class="col-12 col-lg-4">
 
+			<h3 class="text-center mb-3">Company Description</h3>
+			<hr/>
+			<p> <?php echo wp_kses( $company['description'], 'post' ); ?></p>
+
 			<?php get_template_part( 'template-parts/company-financial-box' ); ?>
+
 
 		</div> <!-- col-12 col-lg-6 -->
 

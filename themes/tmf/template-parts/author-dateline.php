@@ -9,4 +9,4 @@
  */
 
 ?>
-<em>Posted by <?php the_author(); ?> on <?php echo get_the_date(); ?></em>
+<em>Posted by <strong><?php the_author(); ?></strong> on <?php echo get_the_date(); ?></em>

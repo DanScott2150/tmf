@@ -18,8 +18,8 @@ while ( have_posts() ) :
 
 	<header class="pb-3 mb-3 border-bottom">
 		<h2>Stock Recommendation: <?php the_title(); ?> </h2>
-		<?php get_template_part( 'template-parts/author-dateline' ); ?>
 		<?php get_template_part( 'template-parts/stock-ticker-list' ); ?>
+		<?php get_template_part( 'template-parts/author-dateline' ); ?>
 	</header>
 
 	<div class="container-fluid">

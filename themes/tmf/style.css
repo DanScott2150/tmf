@@ -21,12 +21,13 @@ a.stock-ticker-badge.badge.bg-primary:hover{
 	/* border: 1px solid #000; */
 }
 
-.news-article-card:hover{
-	cursor:pointer;
-	background-color: #D3D3D3;
+.stock-recommendation-card,
+.news-article-card {
+	background-color: #F0F8FF;
 }
 
-.stock-recommendation-card:hover{
+.news-article-card:hover,
+.stock-recommendation-card:hover {
 	cursor:pointer;
 	background-color: #D3D3D3;
 }
