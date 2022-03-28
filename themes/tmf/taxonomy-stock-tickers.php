@@ -101,6 +101,17 @@ $company = array(
 					$news_posts->the_post();
 					get_template_part( 'template-parts/news-article-card', '', array( 'include_excerpt' ) );
 				}
+				?>
+
+				<div id="loadMoreContainer"></div>
+
+				<button
+					id="loadMoreButton"
+					data-pagenum="1">
+					Load More News Articles
+				</button>
+
+				<?php
 			} else {
 				?>
 
