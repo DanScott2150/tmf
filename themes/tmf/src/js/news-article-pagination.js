@@ -5,6 +5,8 @@
  *
  * If this were an ongoing project, would probably make this CPT-agnostic, so it could also be used on Stock Recommendations.
  * ^^ Probably also lots of other opportunities for improvements too.
+ *
+ * @param string $PHP_TERM -- Populates via wp_add_inline_script(). WP Term (stock ticker) for the current company archive page that we're viewing.
  */
 
 const loadMoreButton    = document.getElementById('loadMoreButton');
