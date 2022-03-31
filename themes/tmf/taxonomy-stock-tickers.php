@@ -32,7 +32,7 @@ $company = array(
 	/**
 	 * Beta & Last Div pull from a different API endpoint than the one we use for our stock info callout box.
 	 * I don't think wp_localize_script works for this specific use-case.
-	 * So we just pass them to javascript here manually.
+	 * So we just pass them to javascript here manually. Would be something to re-visit given more time.
 	 */
 ?>
 <script>

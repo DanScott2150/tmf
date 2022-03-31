@@ -1,24 +1,47 @@
 <?php
+/**
+ * Theme Functions
+ *
+ * This file is a bit of a mess. Could have planned things out a bit better here.
+ * Given more time I would definitely split aspects of this (CPT registration, enqueue assets, pagination functionality) into their own standalone files/classes.
+ * Would probably make sense to split some of these out into a standalone plugin(s) so they're theme-agnostic.
+ *
+ * @package tmf
+ */
 
-require get_template_directory() . '/inc/post-types/class-news-article.php';
-require get_template_directory() . '/inc/post-types/class-stock-recommendation.php';
-require get_template_directory() . '/inc/taxonomies/class-stock-ticker.php';
-require get_template_directory() . '/inc/data-api/class-data-api.php';
-
-// Setup CPTs and Taxonomies.
-new News_Article();
-new Stock_Recommendation();
-new Stock_Ticker();
-
-add_action( 'init', 'tmf_theme_init' );
+add_action( 'init', 'tmf_register_taxonomies', 0 ); // Need taxonomy to register before CPTs.
+add_action( 'init', 'tmf_register_cpts', 1 );
+add_action( 'init', 'tmf_misc_theme_init', 99 );
 add_action( 'wp_enqueue_scripts', 'tmf_enqueue_assets' );
 add_action( 'rest_api_init', 'create_endpoints' );
 
+require get_template_directory() . '/inc/data-api/class-data-api.php';
+
+/**
+ * Register custom taxonomies: Stock Ticker
+ * Includes support for 'Company' archive pages.
+ */
+function tmf_register_taxonomies() {
+	require get_template_directory() . '/inc/taxonomies/class-stock-ticker.php';
+	new Stock_Ticker();
+}
+
+/**
+ * Register custom post types: News Article; Stock Recommendation
+ */
+function tmf_register_cpts() {
+	require get_template_directory() . '/inc/post-types/class-news-article.php';
+	require get_template_directory() . '/inc/post-types/class-stock-recommendation.php';
+
+	new News_Article();
+	new Stock_Recommendation();
+}
+
 /**
  * Theme init
+ * Add WP support for auto-title. Not mission critical.
  */
-function tmf_theme_init() {
-	// Add WP support for auto-title.
+function tmf_misc_theme_init() {
 	add_theme_support( 'title-tag' );
 }
 
@@ -31,6 +54,7 @@ function tmf_enqueue_assets() {
 
 	// On single-company archive page ('stock ticker' taxonomy page), need to use JS fetch() for API call.
 	if ( is_tax( 'stock-tickers' ) ) {
+
 		wp_enqueue_script( 'stock-data-api', get_template_directory_uri() . '/src/js/stock-data-api.js', array(), '1.0', true );
 		wp_add_inline_script( 'stock-data-api', 'const $PHP_TERM = "' . single_term_title( '', false ) . '"', 'before' );
 		wp_enqueue_script( 'news-article-pagination', get_template_directory_uri() . '/src/js/news-article-pagination.js', array(), '1.0', true );

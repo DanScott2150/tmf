@@ -32,7 +32,7 @@ get_header();?>
 				}
 				?>
 
-				<p class="mt-3"><a href="/news-article">View All News Articles >></a></p>
+				<!-- <p class="mt-3"><a href="/news-article">View All News Articles >></a></p> -->
 		</div>
 
 		<div class="col-12 col-lg-6">

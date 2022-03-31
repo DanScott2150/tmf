@@ -34,7 +34,7 @@ class News_Article {
 			'label'         => __( 'News Article' ),
 			'labels'        => $labels,
 			'supports'      => array( 'title', 'editor', 'author' ),
-			'taxonomies'    => array( 'stock_ticker' ),
+			'taxonomies'    => array( 'stock-tickers' ),
 			'public'        => true,
 			'menu_position' => 5,
 			'menu_icon'     => 'dashicons-media-document',

@@ -51,6 +51,8 @@ class Stock_Recommendation {
 
 	/**
 	 * Set custom pagination & sort for our archive page.
+	 * Per project requirements (Story 3), archive page needs to sort newest first, show 10 per page.
+	 * I think these are WP defaults... but specifying here just in case.
 	 *
 	 * @param object $query - WP Query for the archive page.
 	 */
