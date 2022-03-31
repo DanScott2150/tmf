@@ -20,10 +20,8 @@
 	- I understand the approach of using environment variables
 	- In the past I've also taken the approach where I add a custom field to a custom settings page within the wp-admin, so the API key is stored and retreived via and database call (depending on who has access to wp-admin).
 
-
-
 ### Usage of JavaScript
-- Used for [Stock data] API fetch
-	- Originally thought process was that this would be my "designated javascript" piece, to satisfy project requirements. At the time I did not realize the news article pagination (noted below) would be well-served via a javascript fetch.
-	- In hindsight, part of me thinks it would be more efficient to change this API call to PHP (housed within the same file/class as the Company Info API fetch)... but from a pagespeed perspective it might make more sense to keep it as javascript on the front-end, so the page loads first and then the stock data loads afterwards. Since the stock data is secondary/sidebar information on the broader page.
-- Used for News Article Pagination on Company Archive Page (story 4, part 5)
+- Per project requirements, JavaScript is being used to fetch & display data:
+	- This is used for the 'stock price' API data, as shown on company archive pages. I originally planned on this being my 'designated javascript' component to satisfy project requirements.
+	- As I continued the project, I realized that the News Article pagination within the Company archive page (Story 4, part 5) would be well-suited for javascript fetch & display as well.
+	- Given that, I considered converting the stock price API fetch into PHP (integrating into the class-data-api.php file, along with the other stock-related API call), but left it as-is in the interest of time constraints.
